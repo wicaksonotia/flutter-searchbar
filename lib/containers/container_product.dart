@@ -15,7 +15,7 @@ class CProduct extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: Column(children: [
         GridView.builder(
-          itemCount: 100,
+          itemCount: 8,
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -23,120 +23,143 @@ class CProduct extends StatelessWidget {
             childAspectRatio: 1.1,
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,
-            mainAxisExtent: 200,
+            mainAxisExtent: 220,
           ),
           itemBuilder: (_, index) {
-            return TRoundedContainer(
-              child: Column(
+            return RoundedContainer(
+              shadow: true,
+              height: 220,
+              child: Stack(
                 children: [
-                  Stack(
+                  Column(
                     children: [
                       // THUMBNAIL PRODUCT
-                      const TRoundedImage(
-                        imageUrl: 'assets/images/ayam.png',
-                        applyImageRadius: false,
-                      ),
-
-                      // SALE TAG
-                      Positioned(
-                        top: 12,
-                        child: TRoundedContainer(
-                          radius: MySizes.sm,
-                          backgroundColor: Colors.red.shade100.withOpacity(0.8),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: MySizes.sm,
-                            vertical: MySizes.xs,
-                          ),
-                          child: Text('70%',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelLarge!
-                                  .apply(color: Colors.black)),
+                      Center(
+                        child: const TRoundedImage(
+                          imageUrl: 'assets/images/ayam.png',
+                          applyImageRadius: false,
                         ),
                       ),
-
-                      // LOVE TAG
-                      Positioned(
-                        right: 0,
-                        child: const CircularIcon(
-                            icon: Icons.heart_broken, color: Colors.red),
-                      ),
-                    ],
-                  ),
-                  MySizes.sizedBox10,
-                  Padding(
-                    padding: const EdgeInsets.only(left: MySizes.sm),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const TProductTitle(
+                      MySizes.sizedBox10,
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: TProductTitle(
                           title:
                               'Mallvose - Celana Pria Chino Premium Panjang 100cm Black Slimfit',
                           smallSize: true,
                         ),
-                        Row(
+                      ),
+                      MySizes.sizedBox10,
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: Row(
                           children: [
-                            Text(
-                              'Celana',
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
-                              style: Theme.of(context).textTheme.labelMedium,
+                            RoundedContainer(
+                              backgroundColor: Colors.yellow.shade100,
+                              shadow: false,
+                              showBorder: true,
+                              borderColor: Colors.orange.shade100,
+                              padding: EdgeInsets.symmetric(horizontal: 5),
+                              radius: 3,
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.star,
+                                    color: Colors.orange.shade800,
+                                    size: MySizes.iconXs,
+                                  ),
+                                  MySizes.sizedBoxW5,
+                                  Text('70%',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelSmall),
+                                ],
+                              ),
                             ),
+                            Spacer(),
                             const Icon(
                               Icons.verified,
                               color: primary,
                               size: MySizes.iconXs,
+                            ),
+                            Text(
+                              '1rb+ terjual',
+                              style: Theme.of(context).textTheme.labelSmall,
                             )
                           ],
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      ),
+                      MySizes.sizedBox10,
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: (Row(
                           children: [
-                            Row(
-                              children: [
-                                Text(
-                                  'Rp',
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    fontSize: MySizes.fonztSizeSm,
-                                    color: Colors.red,
-                                  ),
-                                ),
-                                Text(
-                                  '10.000',
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    fontSize: MySizes.fonztSizeXl,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.red,
-                                  ),
-                                ),
-                              ],
+                            Text(
+                              'Rp',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: MySizes.fonztSizeSm,
+                                color: Colors.red,
+                              ),
                             ),
-                            Container(
-                              decoration: const BoxDecoration(
-                                  color: Colors.black87,
-                                  borderRadius: BorderRadius.only(
-                                    topLeft:
-                                        Radius.circular(MySizes.cardRadiusMd),
-                                    bottomRight:
-                                        Radius.circular(MySizes.cardRadiusMd),
-                                  )),
-                              child: const SizedBox(
-                                width: MySizes.iconLg * 1.2,
-                                height: MySizes.iconLg * 1.2,
-                                child: Center(
-                                    child: Icon(
-                                  Icons.add,
-                                  color: Colors.white,
-                                )),
+                            Text(
+                              '10.000',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: MySizes.fonztSizeXl,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.red,
                               ),
                             ),
                           ],
+                        )),
+                      ),
+                    ],
+                  ),
+                  Positioned(
+                    top: 12,
+                    child: RoundedContainer(
+                      radius: MySizes.sm,
+                      backgroundColor: Colors.red.shade100,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: MySizes.sm,
+                        vertical: MySizes.xs,
+                      ),
+                      child: Text('70%',
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelLarge!
+                              .apply(color: Colors.black)),
+                    ),
+                  ),
+
+                  // LOVE TAG
+                  Positioned(
+                    top: 0,
+                    right: -5,
+                    child: const CircularIcon(
+                        icon: Icons.favorite, color: Colors.red),
+                  ),
+
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: Material(
+                      color: Color(0xFFE57734),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(MySizes.cardRadiusMd),
+                        bottomRight: Radius.circular(MySizes.cardRadiusMd),
+                      ),
+                      child: InkWell(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: Icon(
+                            Icons.add,
+                            color: Colors.white,
+                          ),
                         ),
-                      ],
+                      ),
                     ),
                   ),
                 ],

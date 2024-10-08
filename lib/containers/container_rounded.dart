@@ -2,25 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:searchbar/common/colors.dart';
 import 'package:searchbar/common/sizes.dart';
 
-class TRoundedContainer extends StatelessWidget {
-  const TRoundedContainer(
+class RoundedContainer extends StatelessWidget {
+  const RoundedContainer(
       {Key? key,
       this.child,
       this.width,
       this.height,
       this.margin,
       this.padding,
+      this.shadow = false,
       this.showBorder = false,
       this.radius = MySizes.cardRadiusLg,
       this.backgroundColor = Colors.white,
-      this.borderColor = mainText})
+      this.borderColor = Colors.black})
       : super(key: key);
 
   final double? width, height;
   final double radius;
   final Widget? child;
-  final bool showBorder;
-  final Color borderColor, backgroundColor;
+  final bool showBorder, shadow;
+  final Color backgroundColor;
+  final Color borderColor;
   final EdgeInsetsGeometry? margin, padding;
 
   @override
@@ -32,12 +34,14 @@ class TRoundedContainer extends StatelessWidget {
       margin: margin,
       decoration: BoxDecoration(
         boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            spreadRadius: 0,
-            blurRadius: 7,
-            // offset: Offset(0, 3), // changes position of shadow
-          ),
+          shadow
+              ? BoxShadow(
+                  color: Colors.grey.withOpacity(0.3),
+                  spreadRadius: 0,
+                  blurRadius: 7,
+                  // offset: Offset(0, 3), // changes position of shadow
+                )
+              : BoxShadow()
         ],
         color: backgroundColor,
         borderRadius: BorderRadius.circular(radius),

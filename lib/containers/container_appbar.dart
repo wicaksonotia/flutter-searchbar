@@ -61,7 +61,7 @@ class AppBarContainer extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-                MySizes.sizedBoxW10,
+                MySizes.sizedBoxW15,
                 Badge(
                   label: Text("10+"),
                   child: Icon(

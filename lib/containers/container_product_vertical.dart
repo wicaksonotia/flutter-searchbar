@@ -23,7 +23,7 @@ class TProductVertical extends StatelessWidget {
               color: Colors.grey.shade200),
           child: Column(
             children: [
-              TRoundedContainer(
+              RoundedContainer(
                 height: 180,
                 padding: const EdgeInsets.all(MySizes.sm),
                 backgroundColor: Colors.grey.shade200,
@@ -38,7 +38,7 @@ class TProductVertical extends StatelessWidget {
                     // SALE TAG
                     Positioned(
                       top: 12,
-                      child: TRoundedContainer(
+                      child: RoundedContainer(
                         radius: MySizes.sm,
                         backgroundColor:
                             Colors.yellow.shade100.withOpacity(0.8),

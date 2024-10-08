@@ -20,7 +20,7 @@ class _ScreenSearchState extends State<ScreenSearch>
 
   @override
   void initState() {
-    _tabController = TabController(initialIndex: 0, length: 8, vsync: this);
+    _tabController = TabController(initialIndex: 1, length: 8, vsync: this);
     super.initState();
   }
 
