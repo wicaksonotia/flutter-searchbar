@@ -26,7 +26,7 @@ class SearchBarContainer extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
-        // border: Border.all(color: mainText),
+        // border: Border.all(color: MyColors.main),
       ),
       child: Row(
         children: [
@@ -42,18 +42,18 @@ class SearchBarContainer extends StatelessWidget {
                 hintText: "Search here...",
                 hintStyle: TextStyle(
                   // color: Colors.black54,
-                  color: mainText,
+                  color: MyColors.main,
                 ),
                 prefixIcon: Icon(
                   Icons.search,
                   // color: Colors.black54,
-                  color: mainText,
+                  color: MyColors.main,
                   size: 25,
                 ),
                 suffixIcon: IconButton(
                   icon: const Icon(Icons.clear, size: 22),
                   // color: Colors.black54,
-                  color: mainText,
+                  color: MyColors.main,
                   onPressed: clearText,
                 ),
                 // suffixIcon: _searchController.text.isEmpty
@@ -86,7 +86,7 @@ class SearchBarContainer extends StatelessWidget {
               icon: const Icon(
                 Icons.format_list_bulleted_rounded,
                 // color: Colors.black54,
-                color: mainText,
+                color: MyColors.main,
               )),
         ],
       ),

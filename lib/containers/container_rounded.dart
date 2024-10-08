@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:searchbar/common/colors.dart';
 import 'package:searchbar/common/sizes.dart';
 
 class RoundedContainer extends StatelessWidget {

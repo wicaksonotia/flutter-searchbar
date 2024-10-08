@@ -19,7 +19,7 @@ class BackgroundPainter extends CustomPainter {
     path.lineTo(0, h);
     path.close();
 
-    var colors = [mainText, Colors.white, Colors.white];
+    var colors = [MyColors.main, Colors.white, Colors.white];
     var stops = [0 / 2, 1 / 2, 0 / 2];
 
     Rect rectShape = Rect.fromLTWH(0, 0, size.width, size.height);

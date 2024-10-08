@@ -36,14 +36,12 @@ class MyApp extends StatelessWidget {
         textTheme: const TextTheme(
           //this font we will use later 'H1'
           headlineLarge: TextStyle(
-            color: mainText,
             fontFamily: 'Inter',
             fontSize: 22,
             fontWeight: FontWeight.w700,
           ),
           //this font we will use later 'H2'
           headlineMedium: TextStyle(
-            color: mainText,
             fontFamily: 'Inter',
             fontSize: 17,
             fontWeight: FontWeight.w700,
@@ -57,7 +55,6 @@ class MyApp extends StatelessWidget {
 
           //this font we will use later 'P1'
           bodySmall: TextStyle(
-            color: SecondaryText,
             fontFamily: 'Inter',
             fontSize: 17,
             fontWeight: FontWeight.w500,
@@ -77,7 +74,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: ScreenSearch(),
+      home: const ScreenSearch(),
     );
   }
 }

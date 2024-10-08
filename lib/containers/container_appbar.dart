@@ -13,11 +13,6 @@ class AppBarContainer extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // Icon(
-          //   Icons.dashboard,
-          //   size: MySizes.iconMd,
-          //   color: Colors.white,
-          // ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

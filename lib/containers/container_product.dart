@@ -6,8 +6,8 @@ import 'package:searchbar/common/rounded.dart';
 import 'package:searchbar/common/sizes.dart';
 import 'package:searchbar/containers/container_rounded.dart';
 
-class CProduct extends StatelessWidget {
-  const CProduct({Key? key}) : super(key: key);
+class ProductContainer extends StatelessWidget {
+  const ProductContainer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +15,11 @@ class CProduct extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: Column(children: [
         GridView.builder(
-          itemCount: 8,
+          scrollDirection: Axis.vertical,
+          physics: BouncingScrollPhysics(),
+          itemCount: 20,
           shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
+          // physics: const NeverScrollableScrollPhysics(),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             childAspectRatio: 1.1,
@@ -79,7 +81,7 @@ class CProduct extends StatelessWidget {
                             Spacer(),
                             const Icon(
                               Icons.verified,
-                              color: primary,
+                              color: MyColors.green,
                               size: MySizes.iconXs,
                             ),
                             Text(

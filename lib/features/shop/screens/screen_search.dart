@@ -50,17 +50,17 @@ class _ScreenSearchState extends State<ScreenSearch>
                       physics: ClampingScrollPhysics(),
                       controller: _tabController,
                       contentPadding: EdgeInsets.symmetric(horizontal: 20),
-                      backgroundColor: mainText,
+                      backgroundColor: MyColors.main,
                       unselectedBackgroundColor: Colors.white,
                       borderWidth: .5,
                       radius: 10,
-                      borderColor: mainText,
+                      borderColor: MyColors.main,
                       labelStyle: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),
                       unselectedLabelStyle: TextStyle(
-                        color: mainText,
+                        color: MyColors.main,
                       ),
                       height: 40,
                       center: false,
@@ -89,9 +89,12 @@ class _ScreenSearchState extends State<ScreenSearch>
                 controller: _tabController,
                 children: [
                   Text("Terkait"),
-                  SizedBox(
-                    child: SingleChildScrollView(
-                      child: CProduct(),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    physics: BouncingScrollPhysics(),
+                    child: Padding(
+                      padding: EdgeInsets.only(bottom: 220),
+                      child: ProductContainer(),
                     ),
                   ),
                   Text("Terlaris"),
