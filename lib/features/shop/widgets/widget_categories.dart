@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:searchbar/common/sizes.dart';
 
-class TVerticalImageText extends StatelessWidget {
-  const TVerticalImageText({
+class WidgetCategories extends StatelessWidget {
+  const WidgetCategories({
     Key? key,
     required this.title,
     this.textColor = Colors.white,

@@ -77,7 +77,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const ScreenSearch(),
+      home: ScreenSearch(),
     );
   }
 }

@@ -9,26 +9,13 @@ import 'package:searchbar/containers/container_rounded.dart';
 class CProduct extends StatelessWidget {
   const CProduct({Key? key}) : super(key: key);
 
-  // List dataNama = [
-  //   "Celana Panjang Cargo Premium",
-  //   "CELANA PRIA CHINO PANJANG PRIA UKURAN 27-38 PREMIUM QUALITY",
-  //   "Mallvose - Celana Pria Chino Premium Panjang 100cm Black Slimfit",
-  //   "Murah celana chino panjang kain slimfit melar 27-44 berkualitas",
-  //   "Celana Panjang Cargo Premium",
-  //   "CELANA PRIA CHINO PANJANG PRIA UKURAN 27-38 PREMIUM QUALITY",
-  //   "Mallvose - Celana Pria Chino Premium Panjang 100cm Black Slimfit",
-  //   "Murah celana chino panjang kain slimfit melar 27-44 berkualitas",
-  //   "Celana Panjang Cargo Premium",
-  //   "CELANA PRIA CHINO PANJANG PRIA UKURAN 27-38 PREMIUM QUALITY",
-  // ];
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Column(children: [
         GridView.builder(
-          itemCount: 10,
+          itemCount: 100,
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -106,7 +93,7 @@ class CProduct extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Row(
-                              children: const [
+                              children: [
                                 Text(
                                   'Rp',
                                   maxLines: 1,
@@ -146,7 +133,7 @@ class CProduct extends StatelessWidget {
                                   color: Colors.white,
                                 )),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ],

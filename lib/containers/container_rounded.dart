@@ -31,6 +31,14 @@ class TRoundedContainer extends StatelessWidget {
       padding: padding,
       margin: margin,
       decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            spreadRadius: 0,
+            blurRadius: 7,
+            // offset: Offset(0, 3), // changes position of shadow
+          ),
+        ],
         color: backgroundColor,
         borderRadius: BorderRadius.circular(radius),
         border: showBorder ? Border.all(color: borderColor) : null,
