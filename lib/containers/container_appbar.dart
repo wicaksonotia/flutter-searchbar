@@ -49,19 +49,29 @@ class AppBarContainer extends StatelessWidget {
               ),
             ],
           ),
-          Row(
-            children: const [
-              Icon(
-                Icons.shopping_cart,
-                size: MySizes.iconMd,
-                color: Colors.white,
-              ),
-              Icon(
-                Icons.notifications,
-                size: MySizes.iconMd,
-                color: Colors.white,
-              )
-            ],
+          Padding(
+            padding: const EdgeInsets.only(right: 15),
+            child: Row(
+              children: const [
+                Badge(
+                  label: Text("10+"),
+                  child: Icon(
+                    Icons.shopping_cart,
+                    size: MySizes.iconMd,
+                    color: Colors.white,
+                  ),
+                ),
+                MySizes.sizedBoxW10,
+                Badge(
+                  label: Text("10+"),
+                  child: Icon(
+                    Icons.notifications,
+                    size: MySizes.iconMd,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
           )
         ],
       ),

@@ -55,4 +55,5 @@ class MySizes {
   static const SizedBox sizedBox15 = SizedBox(height: 15);
   static const SizedBox sizedBox20 = SizedBox(height: 20);
   static const SizedBox sizedBox40 = SizedBox(height: 40);
+  static const SizedBox sizedBoxW10 = SizedBox(width: 15);
 }
