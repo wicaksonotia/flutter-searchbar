@@ -3,7 +3,7 @@ import 'package:searchbar/common/sizes.dart';
 
 class TRoundedImage extends StatelessWidget {
   const TRoundedImage(
-      {Key? key,
+      {super.key,
       this.border,
       this.padding,
       this.onPressed,
@@ -14,8 +14,7 @@ class TRoundedImage extends StatelessWidget {
       this.fit = BoxFit.contain,
       this.backgroundColor = Colors.black,
       this.isNetworkImage = false,
-      this.borderRadius = MySizes.md})
-      : super(key: key);
+      this.borderRadius = MySizes.md});
 
   final double? width, height;
   final String imageUrl;

@@ -7,7 +7,7 @@ import 'package:searchbar/common/sizes.dart';
 import 'package:searchbar/containers/container_rounded.dart';
 
 class ProductContainer extends StatelessWidget {
-  const ProductContainer({Key? key}) : super(key: key);
+  const ProductContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class ProductContainer extends StatelessWidget {
         GridView.builder(
           scrollDirection: Axis.vertical,
           physics: BouncingScrollPhysics(),
-          itemCount: 20,
+          itemCount: 2,
           shrinkWrap: true,
           // physics: const NeverScrollableScrollPhysics(),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -25,12 +25,12 @@ class ProductContainer extends StatelessWidget {
             childAspectRatio: 1.1,
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,
-            mainAxisExtent: 220,
+            mainAxisExtent: 240,
           ),
           itemBuilder: (_, index) {
             return RoundedContainer(
               shadow: true,
-              height: 220,
+              height: 240,
               child: Stack(
                 children: [
                   Column(
@@ -48,7 +48,6 @@ class ProductContainer extends StatelessWidget {
                         child: TProductTitle(
                           title:
                               'Mallvose - Celana Pria Chino Premium Panjang 100cm Black Slimfit',
-                          smallSize: true,
                         ),
                       ),
                       MySizes.sizedBox10,
@@ -120,6 +119,29 @@ class ProductContainer extends StatelessWidget {
                       ),
                     ],
                   ),
+
+                  // BUTTON ADD PRODUCT
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: Material(
+                      color: Color(0xFFE57734),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(MySizes.cardRadiusMd),
+                        bottomRight: Radius.circular(MySizes.cardRadiusMd),
+                      ),
+                      child: InkWell(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: Icon(
+                            Icons.add,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  // SALE TAG
                   Positioned(
                     top: 12,
                     child: RoundedContainer(
@@ -143,26 +165,6 @@ class ProductContainer extends StatelessWidget {
                     right: -5,
                     child: const CircularIcon(
                         icon: Icons.favorite, color: Colors.red),
-                  ),
-
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Material(
-                      color: Color(0xFFE57734),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(MySizes.cardRadiusMd),
-                        bottomRight: Radius.circular(MySizes.cardRadiusMd),
-                      ),
-                      child: InkWell(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Icon(
-                            Icons.add,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
                   ),
                 ],
               ),

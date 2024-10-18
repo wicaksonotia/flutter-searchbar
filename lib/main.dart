@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:searchbar/common/colors.dart';
-import 'package:searchbar/features/shop/screens/screen_search.dart';
+import 'package:searchbar/pages/screen_home.dart';
+// import 'package:searchbar/pages/screen_search.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -74,7 +74,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const ScreenSearch(),
+      home: const HomeScreen(),
     );
   }
 }

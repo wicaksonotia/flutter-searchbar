@@ -15,11 +15,11 @@ class MySizes {
   static const double iconLg = 32.0;
 
   // Font size
-  static const double fonztSizeXsm = 12.0;
-  static const double fonztSizeSm = 14.0;
+  static const double fonztSizeXsm = 10.0;
+  static const double fonztSizeSm = 12.0;
   static const double fonztSizeMd = 16.0;
   static const double fonztSizeLg = 18.0;
-  static const double fonztSizeXl = 24.0;
+  static const double fonztSizeXl = 20.0;
 
   // Button sizes
   static const double buttonHeight = 18.0;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:searchbar/common/colors.dart';
 
 class SearchBarContainer extends StatelessWidget {
-  SearchBarContainer({Key? key}) : super(key: key);
+  SearchBarContainer({super.key});
 
   // const SearchBarContainer({
   //   Key? key,
