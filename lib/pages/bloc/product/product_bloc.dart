@@ -1,19 +1,17 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:searchbar/models/product_model.dart';
 import 'package:searchbar/network_manager/dio_helper.dart';
-
-part 'product_event.dart';
-part 'product_state.dart';
+import 'package:searchbar/pages/bloc/product/product_event.dart';
+import 'package:searchbar/pages/bloc/product/product_state.dart';
 
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
-  final RemoteDataSource remoteDataSource;
-  ProductBloc({required this.remoteDataSource}) : super(ProductInitial()) {
-    on<LoadProducts>((event, emit) async {
+  final RemoteDataSource _remoteDataSource;
+
+  ProductBloc(this._remoteDataSource) : super(ProductLoading()) {
+    on<LoadProductEvent>((event, emit) async {
       emit(ProductLoading());
       try {
-        // final result = await remoteDataSource.getProducts();
-        // emit(ProductLoaded(result.data!.cast<Products>()));
+        final result = await _remoteDataSource.getProduct();
+        emit(ProductLoaded(result!));
       } catch (e) {
         emit(ProductError(e.toString()));
       }

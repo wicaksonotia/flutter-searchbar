@@ -1,18 +1,26 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:searchbar/common/sizes.dart';
 import 'package:searchbar/containers/container_rounded.dart';
 
 class WidgetPopularCategories extends StatelessWidget {
-  const WidgetPopularCategories({
-    super.key,
-    this.onTap,
-  });
+  const WidgetPopularCategories(
+      {super.key,
+      this.onTap,
+      required this.dataProductName,
+      required this.dataPhoto,
+      required this.dataDescription});
 
+  final String dataProductName, dataPhoto, dataDescription;
   final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
+    Uint8List decodePhoto;
+    decodePhoto = Base64Decoder().convert(dataPhoto);
     return GestureDetector(
       onTap: onTap,
       child: RoundedContainer(
@@ -33,7 +41,7 @@ class WidgetPopularCategories extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.red,
                 image: DecorationImage(
-                  image: AssetImage('assets/images/Food Picture.png'),
+                  image: MemoryImage(decodePhoto),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -44,16 +52,16 @@ class WidgetPopularCategories extends StatelessWidget {
                 children: [
                   Gap(5),
                   Text(
-                    'is simply dummy text of the printing and typesetting',
+                    dataDescription,
                     style: TextStyle(
                         fontSize: MySizes.fonztSizeSm,
                         color: Colors.black26.withOpacity(.3)),
-                    maxLines: 2,
+                    maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                   ),
                   Text(
-                    'Makanan Enak',
-                    maxLines: 3,
+                    dataProductName,
+                    maxLines: 1,
                   ),
                 ],
               ),

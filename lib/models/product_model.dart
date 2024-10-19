@@ -1,62 +1,36 @@
-class User {
-  int? page;
-  int? perPage;
-  int? total;
-  int? totalPages;
-  List<Data>? data;
+class ProductModel {
+  int? idProduct;
+  String? productName;
+  String? categoriesName;
+  String? description;
+  int? price;
+  String? photo1;
 
-  User({this.page, this.perPage, this.total, this.totalPages, this.data});
+  ProductModel(
+      {this.idProduct,
+      this.productName,
+      this.categoriesName,
+      this.description,
+      this.price,
+      this.photo1});
 
-  User.fromJson(Map<String, dynamic> json) {
-    page = json['page'];
-    perPage = json['per_page'];
-    total = json['total'];
-    totalPages = json['total_pages'];
-    if (json['data'] != null) {
-      data = <Data>[];
-      json['data'].forEach((v) {
-        data!.add(Data.fromJson(v));
-      });
-    }
+  ProductModel.fromJson(Map<String, dynamic> json) {
+    idProduct = json['id_product'];
+    productName = json['product_name'];
+    categoriesName = json['categories_name'];
+    description = json['description'];
+    price = json['price'];
+    photo1 = json['photo_1'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['page'] = page;
-    data['per_page'] = perPage;
-    data['total'] = total;
-    data['total_pages'] = totalPages;
-    if (this.data != null) {
-      data['data'] = this.data!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
-}
-
-class Data {
-  int? id;
-  String? email;
-  String? firstName;
-  String? lastName;
-  String? avatar;
-
-  Data({this.id, this.email, this.firstName, this.lastName, this.avatar});
-
-  Data.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    email = json['email'];
-    firstName = json['first_name'];
-    lastName = json['last_name'];
-    avatar = json['avatar'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['email'] = email;
-    data['first_name'] = firstName;
-    data['last_name'] = lastName;
-    data['avatar'] = avatar;
+    data['id_product'] = idProduct;
+    data['product_name'] = productName;
+    data['categories_name'] = categoriesName;
+    data['description'] = description;
+    data['price'] = price;
+    data['photo_1'] = photo1;
     return data;
   }
 }

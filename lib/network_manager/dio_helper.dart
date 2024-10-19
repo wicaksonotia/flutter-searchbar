@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
+// import 'package:flutter/foundation.dart';
 import 'package:searchbar/models/carousel_model.dart';
+import 'package:searchbar/models/product_model.dart';
 // import 'package:http/http.dart' as http;
 
 class RemoteDataSource {
@@ -12,6 +14,22 @@ class RemoteDataSource {
       if (response.statusCode == 200) {
         List<dynamic> jsonData = response.data;
         return jsonData.map((e) => CarouselModel.fromJson(e)).toList();
+      }
+      return null;
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+
+  Future<List<ProductModel>?> getProduct() async {
+    try {
+      final response = await dio.get('/product');
+      if (response.statusCode == 200) {
+        List<dynamic> jsonData = response.data;
+        return jsonData.map((e) => ProductModel.fromJson(e)).toList();
+        // if (kDebugMode) {
+        //   print(jsonData);
+        // }
       }
       return null;
     } catch (e) {

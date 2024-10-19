@@ -1,18 +1,27 @@
-part of 'product_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+import 'package:searchbar/models/product_model.dart';
 
 @immutable
-sealed class ProductState {}
+sealed class ProductState extends Equatable {}
 
-final class ProductInitial extends ProductState {}
-
-final class ProductLoading extends ProductState {}
-
-final class ProductLoaded extends ProductState {
-  // final List<Products> products;
-  // ProductLoaded(this.products);
+class ProductLoading extends ProductState {
+  @override
+  List<Object?> get props => [];
 }
 
-final class ProductError extends ProductState {
+class ProductLoaded extends ProductState {
+  final List<ProductModel> product;
+  ProductLoaded(this.product);
+
+  @override
+  List<Object?> get props => [product];
+}
+
+class ProductError extends ProductState {
   final String error;
   ProductError(this.error);
+
+  @override
+  List<Object?> get props => [error];
 }
