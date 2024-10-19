@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:searchbar/pages/screen_home.dart';
+import 'package:searchbar/pages/home.dart';
 // import 'package:searchbar/pages/screen_search.dart';
 
 void main() {
@@ -74,7 +74,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const HomeScreen(),
+      home: HomeScreen(),
     );
   }
 }

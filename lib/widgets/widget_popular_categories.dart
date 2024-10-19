@@ -3,8 +3,8 @@ import 'package:gap/gap.dart';
 import 'package:searchbar/common/sizes.dart';
 import 'package:searchbar/containers/container_rounded.dart';
 
-class WidgetCategories extends StatelessWidget {
-  const WidgetCategories({
+class WidgetPopularCategories extends StatelessWidget {
+  const WidgetPopularCategories({
     super.key,
     this.onTap,
   });

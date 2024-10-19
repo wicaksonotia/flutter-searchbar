@@ -15,7 +15,7 @@ import 'package:searchbar/pages/bloc/slider_promo/slider_promo_bloc.dart';
 import 'package:searchbar/pages/bloc/slider_promo/slider_promo_event.dart';
 import 'package:searchbar/pages/bloc/slider_promo/slider_promo_state.dart';
 
-Widget blocBody() {
+Widget sliderWidget() {
   return BlocProvider(
     create: (context) => SliderPromoBloc(
       RemoteDataSource(),

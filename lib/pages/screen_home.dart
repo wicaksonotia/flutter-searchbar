@@ -3,12 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:searchbar/containers/container_appbar.dart';
 import 'package:searchbar/containers/container_popular_categories.dart';
-import 'package:searchbar/features/shop/widgets/widget_slider.dart';
+import 'package:searchbar/widgets/widget_slider.dart';
 import 'package:searchbar/network_manager/dio_helper.dart';
 import 'package:searchbar/pages/bloc/slider_promo/slider_promo_bloc.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomeScreensssss extends StatelessWidget {
+  const HomeScreensssss({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +30,10 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   AppBarContainer(),
                   Gap(10),
-                  blocBody(),
+                  sliderWidget(),
                   Gap(10),
                   PopularCategoriesContainer(),
+                  Gap(10),
                 ],
               ),
             ),
