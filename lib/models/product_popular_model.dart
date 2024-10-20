@@ -1,29 +1,26 @@
-class ProductModel {
+class ProductPopularModel {
   int? idProduct;
   String? productName;
   String? categoriesName;
   String? description;
   int? price;
   String? photo1;
-  bool promo = false;
 
-  ProductModel(
+  ProductPopularModel(
       {this.idProduct,
       this.productName,
       this.categoriesName,
       this.description,
       this.price,
-      this.photo1,
-      this.promo = false});
+      this.photo1});
 
-  ProductModel.fromJson(Map<String, dynamic> json) {
+  ProductPopularModel.fromJson(Map<String, dynamic> json) {
     idProduct = json['id_product'];
     productName = json['product_name'];
     categoriesName = json['categories_name'];
     description = json['description'];
     price = json['price'];
     photo1 = json['photo_1'];
-    promo = json['promo'];
   }
 
   Map<String, dynamic> toJson() {
@@ -34,7 +31,6 @@ class ProductModel {
     data['description'] = description;
     data['price'] = price;
     data['photo_1'] = photo1;
-    data['promo'] = promo;
     return data;
   }
 }

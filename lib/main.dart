@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:searchbar/pages/home.dart';
+// import 'package:searchbar/pages/screen_home.dart';
 // import 'package:searchbar/pages/screen_search.dart';
 
 void main() {
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        scaffoldBackgroundColor: Colors.grey[200],
+        scaffoldBackgroundColor: Colors.white,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
         textTheme: const TextTheme(

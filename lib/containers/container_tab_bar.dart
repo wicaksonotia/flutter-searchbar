@@ -1,7 +1,8 @@
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:searchbar/common/colors.dart';
-import 'package:searchbar/widgets/widget_header_seeall.dart';
+import 'package:searchbar/widgets/widget_product.dart';
 
 class TabBarContainer extends StatefulWidget {
   const TabBarContainer({super.key});
@@ -26,9 +27,6 @@ class _TabBarContainerState extends State<TabBarContainer>
     );
     return Column(
       children: [
-        HeaderSeeAllWidget(
-          header: "Categories",
-        ),
         Container(
           alignment: Alignment.centerLeft,
           child: TabBar(
@@ -49,13 +47,15 @@ class _TabBarContainerState extends State<TabBarContainer>
             tabs: tabBarItems.map((label) => Tab(text: label)).toList(),
           ),
         ),
-        SizedBox(
-          width: double.maxFinite,
-          height: 100,
+        Gap(10),
+        Container(
+          constraints: const BoxConstraints(
+            maxHeight: 300,
+          ),
           child: TabBarView(
             controller: tabController,
             children: [
-              Text("Places"),
+              productWidget(),
               Text("Inspirations"),
               Text("Emotions"),
             ],

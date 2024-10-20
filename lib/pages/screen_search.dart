@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:searchbar/common/background.dart';
-import 'package:searchbar/common/sizes.dart';
 import 'package:searchbar/containers/container_appbar.dart';
-import 'package:searchbar/containers/container_product.dart';
 import 'package:searchbar/containers/container_search.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -25,7 +24,7 @@ class _SearchScreenState extends State<SearchScreen> {
               child: Column(
                 children: [
                   const AppBarContainer(),
-                  MySizes.sizedBox20,
+                  Gap(20),
                   SearchBarContainer(),
                   // const PopularCategoriesContainer(),
                 ],
@@ -38,7 +37,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 physics: BouncingScrollPhysics(),
                 child: Padding(
                   padding: EdgeInsets.only(bottom: 220),
-                  child: ProductContainer(),
+                  // child: ProductContainer(),
                 ),
               ),
             ),

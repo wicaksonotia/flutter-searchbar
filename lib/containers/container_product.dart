@@ -1,5 +1,9 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
-import 'package:searchbar/common/circular_icon.dart';
+import 'package:gap/gap.dart';
+// import 'package:searchbar/common/circular_icon.dart';
 import 'package:searchbar/common/colors.dart';
 import 'package:searchbar/common/product_title.dart';
 import 'package:searchbar/common/rounded.dart';
@@ -7,171 +11,151 @@ import 'package:searchbar/common/sizes.dart';
 import 'package:searchbar/containers/container_rounded.dart';
 
 class ProductContainer extends StatelessWidget {
-  const ProductContainer({super.key});
+  const ProductContainer(
+      {super.key,
+      required this.dataProductName,
+      required this.dataPhoto,
+      required this.dataDescription,
+      required this.dataPrice,
+      this.dataPromo = false});
 
+  final String dataProductName, dataPhoto, dataDescription, dataPrice;
+  final bool dataPromo;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10),
-      child: Column(children: [
-        GridView.builder(
-          scrollDirection: Axis.vertical,
-          physics: BouncingScrollPhysics(),
-          itemCount: 2,
-          shrinkWrap: true,
-          // physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 1.1,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
-            mainAxisExtent: 240,
-          ),
-          itemBuilder: (_, index) {
-            return RoundedContainer(
-              shadow: true,
-              height: 240,
-              child: Stack(
-                children: [
-                  Column(
-                    children: [
-                      // THUMBNAIL PRODUCT
-                      Center(
-                        child: const TRoundedImage(
-                          imageUrl: 'assets/images/ayam.png',
-                          applyImageRadius: false,
-                        ),
-                      ),
-                      MySizes.sizedBox10,
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        child: TProductTitle(
-                          title:
-                              'Mallvose - Celana Pria Chino Premium Panjang 100cm Black Slimfit',
-                        ),
-                      ),
-                      MySizes.sizedBox10,
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        child: Row(
-                          children: [
-                            RoundedContainer(
-                              backgroundColor: Colors.yellow.shade100,
-                              shadow: false,
-                              showBorder: true,
-                              borderColor: Colors.orange.shade100,
-                              padding: EdgeInsets.symmetric(horizontal: 5),
-                              radius: 3,
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.star,
-                                    color: Colors.orange.shade800,
-                                    size: MySizes.iconXs,
-                                  ),
-                                  MySizes.sizedBoxW5,
-                                  Text('70%',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .labelSmall),
-                                ],
-                              ),
-                            ),
-                            Spacer(),
-                            const Icon(
-                              Icons.verified,
-                              color: MyColors.green,
-                              size: MySizes.iconXs,
-                            ),
-                            Text(
-                              '1rb+ terjual',
-                              style: Theme.of(context).textTheme.labelSmall,
-                            )
-                          ],
-                        ),
-                      ),
-                      MySizes.sizedBox10,
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        child: (Row(
-                          children: [
-                            Text(
-                              'Rp',
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: MySizes.fonztSizeSm,
-                                color: Colors.red,
-                              ),
-                            ),
-                            Text(
-                              '10.000',
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: MySizes.fonztSizeXl,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.red,
-                              ),
-                            ),
-                          ],
-                        )),
-                      ),
-                    ],
-                  ),
-
-                  // BUTTON ADD PRODUCT
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Material(
-                      color: Color(0xFFE57734),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(MySizes.cardRadiusMd),
-                        bottomRight: Radius.circular(MySizes.cardRadiusMd),
-                      ),
-                      child: InkWell(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Icon(
-                            Icons.add,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  // SALE TAG
-                  Positioned(
-                    top: 12,
-                    child: RoundedContainer(
-                      radius: MySizes.sm,
-                      backgroundColor: Colors.red.shade100,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: MySizes.sm,
-                        vertical: MySizes.xs,
-                      ),
-                      child: Text('70%',
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelLarge!
-                              .apply(color: Colors.black)),
-                    ),
-                  ),
-
-                  // LOVE TAG
-                  Positioned(
-                    top: 0,
-                    right: -5,
-                    child: const CircularIcon(
-                        icon: Icons.favorite, color: Colors.red),
-                  ),
-                ],
+    Uint8List decodePhoto;
+    decodePhoto = Base64Decoder().convert(dataPhoto);
+    return RoundedContainer(
+      shadow: true,
+      backgroundColor: Colors.white,
+      height: 240,
+      child: Stack(
+        children: [
+          Column(
+            children: [
+              // THUMBNAIL PRODUCT
+              TRoundedImage(
+                photo: decodePhoto,
+                applyImageRadius: true,
+                borderRadius: MySizes.cardRadiusLg,
               ),
-            );
-          },
-        )
-      ]),
+              Gap(10),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: TProductTitle(
+                  title: dataProductName,
+                ),
+              ),
+              Gap(10),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  children: [
+                    RoundedContainer(
+                      backgroundColor: Colors.yellow.shade100,
+                      shadow: false,
+                      showBorder: true,
+                      borderColor: Colors.orange.shade100,
+                      padding: EdgeInsets.symmetric(horizontal: 5),
+                      radius: 3,
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.star,
+                            color: Colors.orange.shade800,
+                            size: MySizes.iconXs,
+                          ),
+                          MySizes.sizedBoxW5,
+                          Text('70%',
+                              style: Theme.of(context).textTheme.labelSmall),
+                        ],
+                      ),
+                    ),
+                    Spacer(),
+                    const Icon(
+                      Icons.verified,
+                      color: MyColors.green,
+                      size: MySizes.iconXs,
+                    ),
+                    Text(
+                      '1rb+ terjual',
+                      style: Theme.of(context).textTheme.labelSmall,
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: (Row(
+                  children: [
+                    Text(
+                      'Rp',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: MySizes.fonztSizeSm,
+                        color: Colors.red,
+                      ),
+                    ),
+                    Text(
+                      dataPrice,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.normal,
+                        color: Colors.red,
+                      ),
+                    ),
+                  ],
+                )),
+              ),
+            ],
+          ),
+
+          // BUTTON ADD PRODUCT
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Material(
+              color: Color(0xFFE57734),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(MySizes.cardRadiusMd),
+                bottomRight: Radius.circular(MySizes.cardRadiusMd),
+              ),
+              child: InkWell(
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Icon(
+                    Icons.add,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ),
+
+          // SALE TAG
+          if (dataPromo)
+            Positioned(
+              child: RoundedContainer(
+                radius: MySizes.sm,
+                backgroundColor: MyColors.main,
+                padding: const EdgeInsets.all(3),
+                child: Text('PROMO %',
+                    style: Theme.of(context)
+                        .textTheme
+                        .labelSmall!
+                        .apply(color: Colors.white)),
+              ),
+            ),
+
+          // LOVE TAG
+          // Positioned(
+          //   top: 0,
+          //   right: -5,
+          //   child: const CircularIcon(icon: Icons.favorite, color: Colors.red),
+          // ),
+        ],
+      ),
     );
   }
 }

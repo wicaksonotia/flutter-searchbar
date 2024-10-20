@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:searchbar/models/product_model.dart';
+import 'package:searchbar/models/product_popular_model.dart';
 import 'package:searchbar/network_manager/dio_helper.dart';
-import 'package:searchbar/pages/bloc/product/product_bloc.dart';
-import 'package:searchbar/pages/bloc/product/product_event.dart';
-import 'package:searchbar/pages/bloc/product/product_state.dart';
-import 'package:searchbar/widgets/widget_popular_categories.dart';
+import 'package:searchbar/pages/bloc/product_popular/productpopular_bloc.dart';
+import 'package:searchbar/pages/bloc/product_popular/productpopular_event.dart';
+import 'package:searchbar/pages/bloc/product_popular/productpopular_state.dart';
+import 'package:searchbar/containers/container_product_popular.dart';
 
-Widget productWidget() {
+Widget productPopularWidget() {
   return BlocProvider(
-    create: (context) => ProductBloc(
+    create: (context) => ProductPopularBloc(
       RemoteDataSource(),
-    )..add(LoadProductEvent()),
-    child: BlocBuilder<ProductBloc, ProductState>(
+    )..add(LoadProductPopularEvent()),
+    child: BlocBuilder<ProductPopularBloc, ProductPopularState>(
       builder: (context, state) {
-        if (state is ProductLoading) {
+        if (state is ProductPopularLoading) {
           return const Center(
             child: CircularProgressIndicator(),
           );
         }
-        if (state is ProductError) {
+        if (state is ProductPopularError) {
           return Center(
             child: Text('Error: ${state.error}'),
           );
         }
-        if (state is ProductLoaded) {
-          List<ProductModel> productData = state.product;
+        if (state is ProductPopularLoaded) {
+          List<ProductPopularModel> productData = state.product;
           return SizedBox(
             height: 80,
             child: ListView.builder(
@@ -34,7 +34,7 @@ Widget productWidget() {
               scrollDirection: Axis.horizontal,
               physics: BouncingScrollPhysics(),
               itemBuilder: (_, int index) {
-                return WidgetPopularCategories(
+                return productPopularContainer(
                   dataProductName: productData[index].productName!,
                   dataPhoto: productData[index].photo1!,
                   dataDescription: productData[index].description!,

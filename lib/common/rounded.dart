@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:searchbar/common/sizes.dart';
 
@@ -10,20 +12,18 @@ class TRoundedImage extends StatelessWidget {
       this.width,
       this.height,
       this.applyImageRadius = true,
-      required this.imageUrl,
+      required this.photo,
       this.fit = BoxFit.contain,
       this.backgroundColor = Colors.black,
-      this.isNetworkImage = false,
       this.borderRadius = MySizes.md});
 
   final double? width, height;
-  final String imageUrl;
+  final Uint8List photo;
   final bool applyImageRadius;
   final BoxBorder? border;
   final Color backgroundColor;
   final BoxFit? fit;
   final EdgeInsetsGeometry? padding;
-  final bool isNetworkImage;
   final VoidCallback? onPressed;
   final double borderRadius;
 
@@ -35,17 +35,16 @@ class TRoundedImage extends StatelessWidget {
         width: width,
         height: height,
         padding: padding,
-        decoration: BoxDecoration(
-            border: border, borderRadius: BorderRadius.circular(borderRadius)),
         child: ClipRRect(
-            borderRadius: applyImageRadius
-                ? BorderRadius.circular(borderRadius)
-                : BorderRadius.zero,
-            child: Image(
-                fit: fit,
-                image: isNetworkImage
-                    ? NetworkImage(imageUrl)
-                    : AssetImage(imageUrl) as ImageProvider)),
+          borderRadius: applyImageRadius
+              ? BorderRadius.only(
+                  topLeft: Radius.circular(borderRadius),
+                  topRight: Radius.circular(borderRadius))
+              : BorderRadius.zero,
+          child: Image(
+            image: MemoryImage(photo),
+          ),
+        ),
       ),
     );
   }

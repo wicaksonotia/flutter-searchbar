@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
 // import 'package:flutter/foundation.dart';
+// import 'package:flutter/foundation.dart';
 import 'package:searchbar/models/carousel_model.dart';
 import 'package:searchbar/models/product_model.dart';
+import 'package:searchbar/models/product_popular_model.dart';
 // import 'package:http/http.dart' as http;
 
 class RemoteDataSource {
@@ -21,6 +23,7 @@ class RemoteDataSource {
     }
   }
 
+  // PRODUCT
   Future<List<ProductModel>?> getProduct() async {
     try {
       final response = await dio.get('/product');
@@ -30,6 +33,19 @@ class RemoteDataSource {
         // if (kDebugMode) {
         //   print(jsonData);
         // }
+      }
+      return null;
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+
+  Future<List<ProductPopularModel>?> getProductPopular() async {
+    try {
+      final response = await dio.get('/productpopular');
+      if (response.statusCode == 200) {
+        List<dynamic> jsonData = response.data;
+        return jsonData.map((e) => ProductPopularModel.fromJson(e)).toList();
       }
       return null;
     } catch (e) {
